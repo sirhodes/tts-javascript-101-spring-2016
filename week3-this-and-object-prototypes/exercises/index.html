@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <title>ToDo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.1/foundation.css"/>
+    <style media="screen">
+      .myBackgroundColor {
+        background-color: #44FFF0;
+      }
+      li[completed="true"] {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <div class="columns small-12">
+        <h1>Seth's ToDos</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="columns small-9">
+        <input type="text" id="newTask" />
+      </div>
+      <div class="columns small-3">
+        <a class="button" onclick="addTask(newTask.value)">
+          ADD
+        </a>
+      </div>
+    </div>
+
+    <div class="row myBackgroundColor">
+      <div class="columns small-12">
+        <ul id="taskList">
+
+        </ul>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.3.js"></script>
+    <script src="todo.js"></script>
+  </body>
+</html>
