@@ -1,0 +1,24 @@
+{
+  "tasks": [
+    {
+      "title": "Eat Panera with Zack",
+      "completed": false
+    },
+    {
+      "title": "Walk Scruffy the dog",
+      "completed": true
+    },
+    {
+      "title": "Clean the projector",
+      "completed": false
+    },
+    {
+      "title": "Mop the kitchen",
+      "completed": true
+    },
+    {
+      "title": "Buy trash bags",
+      "completed": false
+    }
+  ]
+}
