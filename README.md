@@ -1,3 +1,3 @@
-# Tech Talent South - JavaScript 101
+# [Tech Talent South](http://techtalentsouth.com/) - JavaScript 101
 ## Spring 2016
 -----
