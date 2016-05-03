@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ToDo">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>ToDo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.css" />
+    <style media="screen">
+      .completed {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body ng-controller="MainController">
+    <div class="row">
+      <input type="text" ng-model="newTask" class="small-9 columns" ng-keypress="$event.keyCode == 13 && addTask(newTask)" />
+      <a class="small-3 columns button" ng-click="addTask(newTask)">Add</a>
+    </div>
+    <ul class="row">
+      <li
+        class="small-12 columns"
+        ng-click="task.completed = !task.completed"
+        ng-repeat="task in tasks"
+        ng-class="{'completed': task.completed}"
+      >
+        {{task.title}}
+        <i class"fa fa-remove" ng-click="tasks.splice($index, 1)"></i>
+      </li>
+    </ul>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
+    <script type="text/javascript" src="todo.js"></script>
+  </body>
+</html>
