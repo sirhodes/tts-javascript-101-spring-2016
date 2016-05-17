@@ -1,0 +1,49 @@
+<html ng-app="isItCloudy">
+  <head>
+    <title>Is It Cloudy?</title>
+    <link rel="stylesheet" href="bower_components/Materialize/dist/css/materialize.css" />
+  </head>
+  <body ng-controller="MainController">
+    <div ng-show="!user" class="row">
+      <div class="col s9">
+        <label>
+          Please enter your name
+          <input type="text" ng-model="username" />
+        </label>
+      </div>
+      <div class="col s3">
+        <a ng-click="user = username" class="btn">SAVE</a>
+      </div>
+    </div>
+    <!-- end row -->
+    <!-- begin row -->
+    <div ng-hide="!user" class="row blue">
+      <div class="col s12">
+        <h2 ng-click="user = null">{{user}}</h2>
+      </div>
+    </div>
+    <!-- end row -->
+    <!-- begin row -->
+    <div ng-hide="!user" class="row">
+      <div class="col s12">
+        <label>
+          What's your zipcode?
+          <input type="text" ng-model="zipCode" />
+        </label>
+      </div>
+      <div class="col s12">
+        <a ng-click="getForecastByZipCode(zipCode)" ng-hide="zipCode.length !== 5" class="btn">GET FORECAST</a>
+      </div>
+      <div ng-repeat="response in forecasts" class="col s12 card">
+        <h4>{{response.name}}</h4>
+        <h5>Current Temperature: {{response.main.temp}}</h5>
+      </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+    <script src="isItCloudy.js"></script>
+  </body>
+</html>
