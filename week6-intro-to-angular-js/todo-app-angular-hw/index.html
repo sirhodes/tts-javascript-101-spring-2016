@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ToDo">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>ToDo</title>
+    <link rel="stylesheet" href="bower_components/foundation-sites/dist/foundation.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <style media="screen">
+      .completed {
+        text-decoration: line-through;
+      }
+      .red-text {
+        color: red;
+      }
+    </style>
+  </head>
+  <body ng-controller="MainController">
+    <div class="row">
+      <div class="small-12 columns">
+        <h1>{{creator}}'s Tasks <small>{{tasks.length}}</small></h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="columns small-9">
+        <input
+          type="text"
+          ng-keypress="newTask.length > 0 && $event.keyCode === 13 && addTask({title: newTask, dueDate: dueDate})"
+          ng-model="newTask"
+        />
+      </div>
+      <button
+        type="button"
+        ng-hide="!newTask.length || isBeforeTodaysDate(dueDate)"
+        ng-click="addTask({title: newTask, dueDate: dueDate})"
+        class="small-3 columns button">ADD</button>
+    </div>
+    <div class="row">
+      <div class="columns small-12">
+        <input ng-class="{'red-text': isBeforeTodaysDate(dueDate)}" type="date" ng-model="dueDate" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div ng-hide="tasks.length" class="small-12 columns">
+        <h3>Great job, keep it up!</h3>
+      </div>
+      <div class="small-12 columns">
+        <ol>
+          <!-- ng-repeat="(singular) in the (iterator)" -->
+          <li
+            ng-swipe-left="tasks.splice($index, 1)"
+            ng-swipe-right="task.completed = !task.completed"
+            ng-dblclick="tasks.splice($index, 1)"
+            ng-click="task.completed = !task.completed"
+            ng-class="{'completed': task.completed}"
+            ng-repeat="task in tasks | orderBy:'dueDate'">
+            {{task.title}}<small>{{task.dueDate ? ': ' + displayDate(task.dueDate) : ''}}</small>
+            <i
+              ng-click="tasks.splice($index, 1)"
+              class="fa fa-trash"
+              aria-hidden="true">
+            </i>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="bower_components/moment/moment.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="bower_components/angular-touch/angular-touch.js"></script>
+    <script type="text/javascript" src="todo.js"></script>
+  </body>
+</html>

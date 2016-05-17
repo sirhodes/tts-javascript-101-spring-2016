@@ -1,0 +1,17 @@
+{
+  "name": "todo-app-angular",
+  "authors": [
+    "Seth Rhodes <seth@thinkpixbit.com>"
+  ],
+  "description": "Our class' ToDo application, rewritten in Angular",
+  "main": "todo.js",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "angular-touch": "^1.5.5",
+    "font-awesome": "fontawesome#^4.6.1",
+    "angular": "^1.5.5",
+    "foundation-sites": "^6.2.1"
+  }
+}
